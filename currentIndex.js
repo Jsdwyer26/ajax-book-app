@@ -15,7 +15,7 @@ $(function() {
 	var bookCollection = [];
 
 	//Form Id for CreateBook
-	var $newBook = $('#new-book');
+	var $newBook = $('#newBook');
 
 	//Step 4 (HandleBars): Compile your template in main.js. Calling Handlebars.compile(source)
 	//returns a function which is saved to the variabe template(from html). We will later use our new
@@ -24,17 +24,28 @@ $(function() {
 	//Setting up the ability to pass in data through our template.(A function). 
 	var template = Handlebars.compile(source);
 	console.log(template);
+	
+	/*function render() {	
+		$booksList.empty();
+
+		//Step2. Pass in data through our template. Step 2 is(or seems to be) the crux of getting the books into handlebars/html format
+		var booksHtmlReady = template({ taco: data.books });
+		//sanity check
+		console.log(booksHtmlReady);
+		
+		//Step3 appending it to the screen
+		$booksList.append(booksHtmlReady);
+    }*/
 
     //See a list of all books.
 	$.get(rootUrl, function (data) {
 		//Step2. Pass in data through our template. Step 2 is(or seems to be) the crux of getting the books into handlebars/html format
-		var booksHtmlReady = template({taco: data.books});
+		var booksHtmlReady = template({ taco: data.books });
 		//sanity check
-		console.log(data);
-		bookCollection = booksHtmlReady;
+		console.log(booksHtmlReady);
+		//bookCollection = booksHtmlReady;
 		//Step3 appending it to the screen
 		$bookList.append(booksHtmlReady);
-		
 	});
 
 	//Add(POST) books

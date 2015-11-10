@@ -14,16 +14,57 @@
 
   <title>AJAX Book App</title>
 </head>
+
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
+  <div class="container"><!-- Div1 -->
+    <div class="row"><!-- Div2 -->
+      <div class="col-md-6 col-md-offset-3"><!-- Div3 -->
         <h1 class="text-center">AJAX Book App</h1>
         <br>
-        <div id="books-list"></div>
-      </div>
-    </div>
-  </div>
+            <!-- Form to input data to create a book. id="create-book" --> 
+          <form id="new-book"> 
+            <div class="form-group">
+              <input id="title" class="form-control" type="text" placeholder="New Book Title">
+            </div>
+            <div class="form-group">   
+              <input id="author" class="form-control" type="text" placeholder="New Book Author">
+            </div>
+            <div class="form-group">  
+              <input id="image" class="form-control" type="text" placeholder="New Book Image(url)">    
+            </div>
+            <div class="form-group">  
+              <input id="releaseDate" class="form-control" type="text" placeholder="New Book Published Date">    
+            </div>   
+            <div class="form-group">  
+              <input class="btn btn-success btn-block" type="submit" place="Add New Book">
+            </div>    
+          </form>
+              <!--books-list = where it will be appended to  -->
+        <div id="book-list"><!-- templateId Div4 -->
+            <!-- handleBars template -->
+          <script id="book-template" type="text/x-handlebars-template"> 
+              {{#each taco}}  
+                  <div class ="row">
+
+                      <!-- book image -->
+                      <div class="col-sm-4">
+                        <img src="{{image}}" class="img-responsive"> 
+                      </div>
+
+                      <!-- book details -->
+                      <div class="col-sm-8">
+                        <p>Title: <strong>{{title}}</strong> </p>
+                        <p>Author: <strong>{{author}}</strong> </p>
+                        <p>Published: <strong>{{releaseDate}}</strong> </p> 
+                      </div> 
+                  </div> <!-- closing row div -->
+              {{/each}}
+          </script> <!-- Closing handleBars scripts -->
+
+        </div> <!-- closing books-list Div4 -->
+      </div><!-- Closing col-md-6 div Div3 -->
+    </div><!-- closing row div Div2 -->
+  </div><!-- closing container tag Div1-->
   
   <!-- jquery -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
